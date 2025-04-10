@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Presentasi Observasi UMKM - ELS Komputer</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Animate.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --light-color: #f8f9fa;
+        --dark-color: #343a40;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--light-color);
+        overflow-x: hidden;
+        color: var(--dark-color);
+      }
+
+      .presentation-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+        background-color: white;
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .slide {
+        padding: 60px 80px;
+        min-height: 100vh;
+        display: none;
+        animation: fadeIn 0.8s ease-in-out;
+      }
+
+      .slide.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--dark-color)
+        );
+        color: white;
+        padding: 15px 0;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .header h2 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        margin: 0;
+      }
+
+      .title-slide {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .title-slide::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+        transform: rotate(30deg);
+        z-index: 1;
+      }
+
+      .title-slide h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 2;
+      }
+
+      .title-slide p {
+        font-size: 1.5rem;
+        max-width: 800px;
+        position: relative;
+        z-index: 2;
+        opacity: 0.9;
+      }
+
+      .team-member {
+        text-align: center;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+      }
+
+      .team-member:hover {
+        transform: translateY(-10px);
+      }
+
+      .member-avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid white;
+        margin-bottom: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .section-title {
+        color: var(--primary-color);
+        border-bottom: 3px solid var(--secondary-color);
+        padding-bottom: 10px;
+        margin-bottom: 40px;
+        font-weight: 700;
+        font-family: "Playfair Display", serif;
+        font-size: 2.2rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100px;
+        height: 3px;
+        background-color: var(--accent-color);
+      }
+
+      .step-card {
+        border-left: 5px solid var(--secondary-color);
+        margin-bottom: 25px;
+        transition: all 0.3s ease;
+        border-radius: 0 8px 8px 0;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .step-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border-left-color: var(--accent-color);
+      }
+
+      .step-number {
+        background: linear-gradient(
+          135deg,
+          var(--secondary-color),
+          var(--primary-color)
+        );
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-right: 20px;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .observation-point {
+        margin-bottom: 25px;
+        padding-left: 25px;
+        border-left: 3px solid var(--secondary-color);
+        transition: all 0.3s ease;
+      }
+
+      .observation-point:hover {
+        border-left-color: var(--accent-color);
+      }
+
+      .observation-point h4 {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+
+      .observation-point h4 i {
+        margin-right: 10px;
+        font-size: 1.2rem;
+      }
+
+      .media-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+        margin: 30px 0;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .media-container:hover {
+        transform: scale(1.02);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .media-container iframe,
+      .media-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        object-fit: cover;
+      }
+
+      .footer {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--dark-color)
+        );
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        position: sticky;
+        bottom: 0;
+        z-index: 100;
+      }
+
+      .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+      }
+
+      .btn-nav {
+        background: linear-gradient(
+          135deg,
+          var(--secondary-color),
+          var(--primary-color)
+        );
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 30px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-nav:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        color: white;
+      }
+
+      .btn-nav:disabled {
+        opacity: 0.5;
+        transform: none !important;
+        box-shadow: none !important;
+      }
+
+      .btn-nav i {
+        margin: 0 5px;
+      }
+
+      .progress-container {
+        height: 6px;
+        background-color: #e9ecef;
+        margin-bottom: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--secondary-color),
+          var(--accent-color)
+        );
+        width: 0%;
+        transition: width 0.5s ease;
+        position: relative;
+      }
+
+      .progress-bar::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.8) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      .slide-counter {
+        text-align: right;
+        color: #6c757d;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .highlight-box {
+        background-color: rgba(52, 152, 219, 0.1);
+        border-left: 4px solid var(--secondary-color);
+        padding: 20px;
+        border-radius: 0 8px 8px 0;
+        margin: 20px 0;
+      }
+
+      .fact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+      }
+
+      .fact-icon {
+        background-color: var(--secondary-color);
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        flex-shrink: 0;
+      }
+
+      .chart-container {
+        height: 300px;
+        margin: 30px 0;
+        position: relative;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 992px) {
+        .slide {
+          padding: 50px 40px;
+        }
+
+        .title-slide h1 {
+          font-size: 3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .slide {
+          padding: 40px 30px;
+        }
+
+        .title-slide h1 {
+          font-size: 2.5rem;
+        }
+
+        .title-slide p {
+          font-size: 1.2rem;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+
+        .member-avatar {
+          width: 120px;
+          height: 120px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .slide {
+          padding: 30px 20px;
+        }
+
+        .title-slide h1 {
+          font-size: 2rem;
+        }
+
+        .section-title {
+          font-size: 1.5rem;
+        }
+
+        .nav-buttons {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .btn-nav {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="presentation-container">
+      <div class="header">
+        <h2>Presentasi Observasi UMKM - ELS Komputer</h2>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <!-- Slide 1: Title Slide -->
+      <div class="slide active" id="slide1">
+        <div class="title-slide">
+          <h1 class="animate__animated animate__fadeInDown">
+            LAPORAN OBSERVASI UMKM
+          </h1>
+          <p class="animate__animated animate__fadeIn animate__delay-1s">
+            Presentasi Hasil Observasi UMKM ELS Komputer
+          </p>
+          <div class="mt-4 animate__animated animate__fadeIn animate__delay-2s">
+            <p>Pertemuan Ke-7 - Penyusunan Laporan Hasil Observasi</p>
+          </div>
+        </div>
+        <div class="slide-counter">Slide 1 of 10</div>
+        <div class="nav-buttons">
+          <button class="btn-nav" onclick="prevSlide()" disabled>
+            <i class="fas fa-arrow-left"></i> Previous
+          </button>
+          <button class="btn-nav" onclick="nextSlide()">
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 2: Team Members -->
+      <div class="slide" id="slide2">
+        <h2 class="section-title">Tim Observasi Kami</h2>
+        <div class="row">
+          <div class="col-md-6 col-lg-3 team-member">
+            <img
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+              alt="Ketua Tim"
+              class="member-avatar"
+            />
+            <h4>John Doe</h4>
+            <p class="text-muted">Ketua Tim</p>
+            <p><small>NIM: 123456789</small></p>
+          </div>
+          <div class="col-md-6 col-lg-3 team-member">
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+              alt="Anggota 1"
+              class="member-avatar"
+            />
+            <h4>Jane Smith</h4>
+            <p class="text-muted">Anggota (Produksi)</p>
+            <p><small>NIM: 234567890</small></p>
+          </div>
+          <div class="col-md-6 col-lg-3 team-member">
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+              alt="Anggota 2"
+              class="member-avatar"
+            />
+            <h4>Robert Johnson</h4>
+            <p class="text-muted">Anggota (Pemasaran)</p>
+            <p><small>NIM: 345678901</small></p>
+          </div>
+          <div class="col-md-6 col-lg-3 team-member">
+            <img
+              src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+              alt="Anggota 3"
+              class="member-avatar"
+            />
+            <h4>Emily Davis</h4>
+            <p class="text-muted">Anggota (Administrasi)</p>
+            <p><small>NIM: 456789012</small></p>
+          </div>
+        </div>
+        <div class="slide-counter">Slide 2 of 10</div>
+        <div class="nav-buttons">
+          <button class="btn-nav" onclick="prevSlide()">
+            <i class="fas fa-arrow-left"></i> Previous
+          </button>
+          <button class="btn-nav" onclick="nextSlide()">
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 3: About ELS Komputer -->
+      <div class="slide" id="slide3">
+        <h2 class="section-title">Profil UMKM ELS Komputer</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="highlight-box">
+              <h4 class="d-flex align-items-center">
+                <i class="fas fa-laptop-code me-3"></i> Profil Singkat
+              </h4>
+              <p>
+                ELS Komputer adalah usaha mikro yang bergerak di bidang
+                teknologi informasi dengan spesialisasi perbaikan hardware dan
+                software komputer/laptop.
+              </p>
+            </div>
+
+            <div class="observation-point">
+              <h4><i class="fas fa-tasks"></i> Bidang Usaha</h4>
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  Perbaikan dan perawatan komputer/laptop
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  Penjualan hardware komputer
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  Instalasi software dan jaringan
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  Pelatihan dasar komputer
+                </li>
+              </ul>
+            </div>
+
+            <div class="observation-point">
+              <h4><i class="fas fa-history"></i> Latar Belakang</h4>
+              <p>
+                Berdiri sejak 2018 oleh Bapak Andi Wijaya. Memiliki 5 karyawan
+                tetap dan telah berkembang pesat dalam 2 tahun terakhir dengan
+                pertumbuhan omset 25% per tahun.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="media-container">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Toko ELS Komputer"
+                class="animate__animated animate__fadeIn"
+              />
+            </div>
+            <div class="fact-item mt-4">
+              <div class="fact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h5>Lokasi</h5>
+                <p>Jl. Teknologi No. 123, Kota Bandung</p>
+              </div>
+            </div>
+            <div class="fact-item">
+              <div class="fact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <h5>Jam Operasional</h5>
+                <p>Senin-Sabtu: 09.00-17.00 WIB</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-counter">Slide 3 of 10</div>
+        <div class="nav-buttons">
+          <button class="btn-nav" onclick="prevSlide()">
+            <i class="fas fa-arrow-left"></i> Previous
+          </button>
+          <button class="btn-nav" onclick="nextSlide()">
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 4: Alur Kegiatan -->
+      <div class="slide" id="slide4">
+        <h2 class="section-title">Metodologi Observasi</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card step-card">
+              <div class="card-body d-flex align-items-center">
+                <div class="step-number">1</div>
+                <div>
+                  <h5>Perencanaan</h5>
+                  <p class="mb-0">
+                    Membentuk tim dengan pembagian tugas yang jelas dan menyusun
+                    instrumen observasi.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card step-card">
+              <div class="card-body d-flex align-items-center">
+                <div class="step-number">2</div>
+                <div>
+                  <h5>Kunjungan Lapangan</h5>
+                  <p class="mb-0">
+                    Melakukan observasi langsung selama 3 hari dengan berbagai
+                    metode pengumpulan data.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card step-card">
+              <div class="card-body d-flex align-items-center">
+                <div class="step-number">3</div>
+                <div>
+                  <h5>Analisis Data</h5>
+                  <p class="mb-0">
+                    Mengolah data menggunakan metode SWOT dan analisis
+                    deskriptif kualitatif.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card step-card">
+              <div class="card-body d-flex align-items-center">
+                <div class="step-number">4</div>
+                <div>
+                  <h5>Penyusunan Laporan</h5>
+                  <p class="mb-0">
+                    Menyusun laporan lengkap dengan temuan dan rekomendasi untuk
+                    pengembangan UMKM.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="media-container">
+              <img
+                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Proses Observasi"
+              />
+            </div>
+            <div class="highlight-box mt-4">
+              <h4>
+                <i class="fas fa-clipboard-list me-2"></i> Metode Pengumpulan
+                Data
+              </h4>
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <i class="fas fa-check text-primary me-2"></i> Observasi
+                  langsung
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check text-primary me-2"></i> Wawancara
+                  mendalam
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check text-primary me-2"></i> Dokumentasi
+                  foto/video
+                </li>
+                <li>
+                  <i class="fas fa-check text-primary me-2"></i> Studi dokumen
+                  usaha
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="slide-counter">Slide 4 of 10</div>
+        <div class="nav-buttons">
+          <button class="btn-nav" onclick="prevSlide()">
+            <i class="fas fa-arrow-left"></i> Previous
+          </button>
+          <button class="btn-nav" onclick="nextSlide()">
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 5: Pembagian Tugas -->
+      <div class="slide" id="slide5">
+        <h2 class="section-title">Pembagian Tugas Observasi</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">
+                  <i class="fas fa-user-tie me-2"></i> Ketua Tim
+                </h5>
+              </div>
+              <div class="card-body">
+                <h6>John Doe</h6>
+                <ul>
+                  <li>Koordinator seluruh kegiatan</li>
+                  <li>Penanggung jawab laporan akhir</li>
+                  <li>Liaison dengan pemilik UMKM</li>
+                  <li>Pengumpulan dan integrasi data</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card mb-4 shadow-sm">
+              <div class="card-header bg-success text-white">
+                <h5 class="mb-0">
+                  <i class="fas fa-cogs me-2"></i> Bagian Produksi
+                </h5>
+              </div>
+              <div class="card-body">
+                <h6>Jane Smith</h6>
+                <ul>
+                  <li>Analisis proses perbaikan hardware</li>
+                  <li>Observasi alur kerja teknisi</li>
+                  <li>Inventarisasi peralatan</li>
+                  <li>Evaluasi kualitas layanan</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-header bg-info text-white">
+                <h5 class="mb-0">
+                  <i class="fas fa-chart-line me-2"></i> Bagian Pemasaran
+                </h5>
+              </div>
+              <div class="card-body">
+                <h6>Robert Johnson</h6>
+                <ul>
+                  <li>Analisis strategi pemasaran</li>
+                  <li>Observasi channel penjualan</li>
+                  <li>Wawancara tentang promosi</li>
+                  <li>Analisis kompetitor</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card mb-4 shadow-sm">
+              <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0">
+                  <i class="fas fa-file-invoice-dollar me-2"></i> Bagian
+                  Administrasi
+                </h5>
+              </div>
+              <div class="card-body">
+                <h6>Emily Davis</h6>
+                <ul>
+                  <li>Analisis sistem administrasi</li>
+                  <li>Observasi perizinan usaha</li>
+                  <li>Dokumentasi keuangan</li>
+                  <li>Analisis SDM dan penggajian</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-counter">Slide 5 of 10</div>
+        <div class="nav-buttons">
+          <button class="btn-nav" onclick="prevSlide()">
+            <i class="fas fa-arrow-left"></i> Previous
+          </button>
+          <button class="btn-nav" onclick="nextSlide()">
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 6: Hasil Observasi Produksi -->
+      <div class="slide" id="slide6">
+        <h2 class="section-title">Temuan Observasi - Bagian Produksi</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="observation-point">
+              <h4><i class="fas fa-tools"></i> Proses Perbaikan</h4>
+              <p>
+                Memiliki alur kerja yang sistematis untuk perbaikan hardware:
+              </p>
+              <ol>
+                <li class="mb-2">
+                  <strong>Diagnosis:</strong> Oleh teknisi senior (30 menit)
+                </li>
+                <li class="mb-2">
+                  <strong>Estimasi:</strong> Biaya dan waktu (termasuk parts)
+                </li>
+                <li class="mb-2">
+                  <strong>Persetujuan:</strong> Pelanggan via WhatsApp/telepon
+                </li>
+                <li class="mb-2">
+                  <strong>Perbaikan:</strong> Rata-rata 2-4 jam
+                </li>
+                <li>
+                  <strong>Quality control:</strong> Uji coba sebelum diserahkan
+                </li>
+              </ol>
+            </div>
+
+            <div class="observation-point">
+              <h4><i class="fas fa-chart-bar"></i> Statistik Layanan</h4>
+              <div class="row mt-3">
+                <div class="col-6">
+                  <div class="card bg-light">
+                    <div class="card-body text-center">
+                      <h3 class="text-primary">15-20</h3>
+                      <p class="mb-0">Perangkat/hari</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="card bg-light">
+                    <div class="card-body text-center">
+                      <h3 class="text-primary">85%</h3>
+                      <p class="mb-0">Tuntas hari yang sama</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="media-container">
+              <img
+                src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Area Produksi"
+              />
+            </div>
+            <div class="highlight-box mt-4">
+              <h4><i class="fas fa-lightbulb me-2"></i> Keunggulan</h4>
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success me-2"></i> Teknisi
+                  berpengalaman (rata-rata 5 tahun)
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  Peralatan lengkap dan modern
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success me-2"></i> Sistem
+                  diagnosis yang akurat
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="slide-counter">Slide 6 of 10</div>
+        <div class="nav-buttons">
+          <button class="btn-nav" onclick="prevSlide()">
+            <i class="fas fa-arrow-left"></i> Previous
+          </button>
+          <button class="btn-nav" onclick="nextSlide()">
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 7: Hasil Observasi Pemasaran -->
+      <div class="slide" id="slide7">
+        <h2 class="section-title">Temuan Observasi - Bagian Pemasaran</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="observation-point">
+              <h4><i class="fas fa-bullhorn"></i> Strategi Pemasaran</h4>
+              <ul class="list-unstyled">
+                <li class="mb-3">
+                  <h6>
+                    <i class="fas fa-users text-primary me-2"></i> Pelanggan
+                    Tetap
+                  </h6>
+                  <p>
+                    Mengandalkan repeat order dan rekomendasi dari pelanggan
+                    yang puas (60% bisnis)
+                  </p>
+                </li>
+                <li class="mb-3">
+                  <h6>
+                    <i class="fab fa-instagram text-danger me-2"></i> Digital
+                    Marketing
+                  </h6>
+                  <p>
+                    Akun Instagram dengan 1.200 followers, posting 2-3x/minggu
+                    (tips perawatan komputer)
+                  </p>
+                </li>
+                <li class="mb-3">
+                  <h6>
+                    <i class="fas fa-handshake text-warning me-2"></i> Kerjasama
+                    Institusi
+                  </h6>
+                  <p>
+                    Bekerja sama dengan 3 kampus dan 5 sekolah sekitar untuk
+                    maintenance rutin
+                  </p>
+                </li>
+                <li>
+                  <h6>
+                    <i class="fas fa-shield-alt text-success me-2"></i> Garansi
+                    Layanan
+                  </h6>
+                  <p>Memberikan garansi 30 hari untuk layanan perbaikan</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="chart-container">
+              <canvas id="marketChart"></canvas>
+            </div>
+            <div class="observation-point">
+              <h4><i class="fas fa-exclamation-triangle"></i> Tantangan</h4>
+              <ul>
+                <li>Persaingan dengan service center resmi</li>
+                <li>Harga parts yang fluktuatif</li>
+                <li>Minimnya anggaran promosi</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="slide-counter">Slide 7 of 10</div>
+        <div class="nav-buttons">
+          <button class="btn-nav" onclick="prevSlide()">
+            <i class="fas fa-arrow-left"></i> Previous
+          </button>
+          <button class="btn-nav" onclick="nextSlide()">
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 8: Hasil Observasi Administrasi -->
+      <div class="slide" id="slide8">
+        <h2 class="section-title">Temuan Observasi - Bagian Administrasi</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="observation-point">
+              <h4><i class="fas fa-file-contract"></i> Legalitas Usaha</h4>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead class="table-primary">
+                    <tr>
+                      <th>Dokumen</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>NIB</td>
+                      <td><span class="badge bg-success">Ada</span></td>
+                    </tr>
+                    <tr>
+                      <td>NPWP</td>
+                      <td><span class="badge bg-success">Ada</span></td>
+                    </tr>
+                    <tr>
+                      <td>Izin Lingkungan</td>
+                      <td>
+                        <span class="badge bg-warning text-dark">Proses</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>SIUP</td>
+                      <td><span class="badge bg-danger">Belum</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="observation-point">
+              <h4><i class="fas fa-money-bill-wave"></i> Keuangan</h4>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <div class="card bg-light">
+                    <div class="card-body text-center">
+                      <h5 class="text-primary">Rp 15-20 juta</h5>
+                      <p class="mb-0">Omset bulanan</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div class="card bg-light">
+                    <div class="card-body text-center">
+                      <h5 class="text-primary">Rp 8-10 juta</h5>
+                      <p class="mb-0">Laba bersih/bulan</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p>
+                Sistem pembukuan masih manual menggunakan buku kas, rencana
+                migrasi ke software akuntansi tahun depan.
+              </p>
+            </div>
+
+            <div class="observation-point">
+              <h4><i class="fas fa-users-cog"></i> SDM</h4>
+              <ul>
+                <li>5 karyawan tetap + 2 part time</li>
+                <li>Gaji Rp 3,5-5 juta/bulan</li>
+                <li>Pelatihan internal setiap 3 bulan</li>
+                <li>Turnover rate rendah (1 orang/tahun)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="slide-counter">Slide 8 of 10</div>
+        <div class="nav-buttons">
+          <button class="btn-nav" onclick="prevSlide()">
+            <i class="fas fa-arrow-left"></i> Previous
+          </button>
+          <button class="btn-nav" onclick="nextSlide()">
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 9: Analisis SWOT -->
+      <div class="slide" id="slide9">
+        <h2 class="section-title">Analisis SWOT ELS Komputer</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-4 border-success">
+              <div class="card-header bg-success text-white">
+                <h5 class="mb-0">
+                  <i class="fas fa-thumbs-up me-2"></i> Strengths (Kekuatan)
+                </h5>
+              </div>
+              <div class="card-body">
+                <ul>
+                  <li>Teknisi berpengalaman dan kompeten</li>
+                  <li>Lokasi strategis dekat kampus</li>
+                  <li>Harga lebih kompetitif dari service center resmi</li>
+                  <li>Pelayanan cepat dan ramah</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card mb-4 border-warning">
+              <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0">
+                  <i class="fas fa-exclamation-triangle me-2"></i> Weaknesses
+                  (Kelemahan)
+                </h5>
+              </div>
+              <div class="card-body">
+                <ul>
+                  <li>Sistem administrasi masih manual</li>
+                  <li>Minimnya anggaran pemasaran</li>
+                  <li>Ketergantungan pada supplier parts</li>
+                  <li>Belum memiliki website resmi</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card mb-4 border-primary">
+              <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">
+                  <i class="fas fa-rocket me-2"></i> Opportunities (Peluang)
+                </h5>
+              </div>
+              <div class="card-body">
+                <ul>
+                  <li>Peningkatan kebutuhan layanan IT pasca pandemi</li>
+                  <li>Potensi kerjasama dengan lebih banyak institusi</li>
+                  <li>Pengembangan layanan baru (recovery data, dll)</li>
+                  <li>Program pemerintah untuk digitalisasi UMKM</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card mb-4 border-danger">
+              <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">
+                  <i class="fas fa-shield-alt me-2"></i> Threats (Ancaman)
+                </h5>
+              </div>
+              <div class="card-body">
+                <ul>
+                  <li>Banyaknya kompetitor baru</li>
+                  <li>Harga parts yang fluktuatif</li>
+                  <li>Perubahan teknologi yang cepat</li>
+                  <li>Service center resmi yang menurunkan harga</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-counter">Slide 9 of 10</div>
+        <div class="nav-buttons">
+          <button class="btn-nav" onclick="prevSlide()">
+            <i class="fas fa-arrow-left"></i> Previous
+          </button>
+          <button class="btn-nav" onclick="nextSlide()">
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Slide 10: Rekomendasi & Penutup -->
+      <div class="slide" id="slide10">
+        <h2 class="section-title">Rekomendasi & Penutup</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="observation-point">
+              <h4><i class="fas fa-lightbulb"></i> Rekomendasi Pengembangan</h4>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5>
+                    <i class="fas fa-digital-tachograph text-primary me-2"></i>
+                    Digitalisasi
+                  </h5>
+                  <ul>
+                    <li>Membuat website profil & layanan</li>
+                    <li>Mengadopsi sistem pembukuan digital</li>
+                    <li>Meningkatkan konten digital marketing</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5>
+                    <i class="fas fa-expand-alt text-success me-2"></i> Ekspansi
+                    Layanan
+                  </h5>
+                  <ul>
+                    <li>Menambah layanan home service</li>
+                    <li>Pelatihan komputer untuk pemula</li>
+                    <li>Layanan recovery data khusus</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h5>
+                    <i class="fas fa-handshake text-warning me-2"></i> Kerjasama
+                  </h5>
+                  <ul>
+                    <li>Memperluas jaringan dengan sekolah/kampus</li>
+                    <li>Kerjasama dengan supplier parts</li>
+                    <li>Bergabung dengan asosiasi reparasi komputer</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="media-container">
+              <img
+                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Tim Observasi"
+              />
+            </div>
+            <div class="highlight-box mt-4">
+              <h4><i class="fas fa-check-circle me-2"></i> Kesimpulan</h4>
+              <p>
+                ELS Komputer memiliki potensi besar untuk berkembang dengan
+                manajemen yang baik, sumber daya manusia kompeten, dan lokasi
+                strategis. Dengan implementasi rekomendasi di atas, diharapkan
+                dapat meningkatkan skala usaha dalam 2-3 tahun ke depan.
+              </p>
+            </div>
+            <div class="text-center mt-5">
+              <h3 class="text-primary">Terima Kasih</h3>
+              <p>Atas perhatian dan waktu yang diberikan</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide-counter">Slide 10 of 10</div>
+        <div class="nav-buttons">
+          <button class="btn-nav" onclick="prevSlide()">
+            <i class="fas fa-arrow-left"></i> Previous
+          </button>
+          <button class="btn-nav" onclick="nextSlide()" disabled>
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p class="mb-0">
+          Presentasi Observasi UMKM ELS Komputer &copy; 2023 - Kelompok 7
+        </p>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // Slide navigation
+      let currentSlide = 1;
+      const totalSlides = 10;
+
+      function showSlide(n) {
+        // Hide all slides
+        document.querySelectorAll(".slide").forEach((slide) => {
+          slide.classList.remove("active");
+        });
+
+        // Show the selected slide
+        document.getElementById(`slide${n}`).classList.add("active");
+
+        // Update progress bar
+        document.getElementById("progressBar").style.width = `${
+          (n / totalSlides) * 100
+        }%`;
+
+        // Update current slide
+        currentSlide = n;
+
+        // Update slide counter in all slides
+        document.querySelectorAll(".slide-counter").forEach((counter) => {
+          counter.textContent = `Slide ${n} of ${totalSlides}`;
+        });
+
+        // Enable/disable navigation buttons
+        document
+          .querySelectorAll('.btn-nav[onclick="prevSlide()"]')
+          .forEach((btn) => {
+            btn.disabled = n === 1;
+          });
+
+        document
+          .querySelectorAll('.btn-nav[onclick="nextSlide()"]')
+          .forEach((btn) => {
+            btn.disabled = n === totalSlides;
+          });
+      }
+
+      function nextSlide() {
+        if (currentSlide < totalSlides) {
+          showSlide(currentSlide + 1);
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 1) {
+          showSlide(currentSlide - 1);
+        }
+      }
+
+      // Initialize chart
+      document.addEventListener("DOMContentLoaded", function () {
+        // Show first slide
+        showSlide(1);
+
+        // Initialize chart if it exists on the current slide
+        if (document.getElementById("marketChart")) {
+          const ctx = document.getElementById("marketChart").getContext("2d");
+          const marketChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+              labels: [
+                "Pelanggan Tetap",
+                "Instagram",
+                "Kerjasama Institusi",
+                "Walk-in",
+              ],
+              datasets: [
+                {
+                  label: "Sumber Pelanggan (%)",
+                  data: [60, 15, 20, 5],
+                  backgroundColor: [
+                    "rgba(52, 152, 219, 0.7)",
+                    "rgba(155, 89, 182, 0.7)",
+                    "rgba(46, 204, 113, 0.7)",
+                    "rgba(241, 196, 15, 0.7)",
+                  ],
+                  borderColor: [
+                    "rgba(52, 152, 219, 1)",
+                    "rgba(155, 89, 182, 1)",
+                    "rgba(46, 204, 113, 1)",
+                    "rgba(241, 196, 15, 1)",
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  max: 100,
+                },
+              },
+            },
+          });
+        }
+      });
+
+      // Keyboard navigation
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") {
+          nextSlide();
+        } else if (e.key === "ArrowLeft") {
+          prevSlide();
+        }
+      });
+    </script>
+  </body>
+</html>
